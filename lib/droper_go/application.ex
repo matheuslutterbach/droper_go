@@ -8,6 +8,7 @@ defmodule DroperGo.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      DroperGo.Amazon.Order.OrderFetcher,
       DroperGoWeb.Telemetry,
       DroperGo.Repo,
       {DNSCluster, query: Application.get_env(:droper_go, :dns_cluster_query) || :ignore},
